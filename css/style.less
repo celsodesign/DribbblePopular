@@ -1,0 +1,609 @@
+    /* 
+    html5doctor.com Reset Stylesheet
+    v1.6.1
+    Last Updated: 2010-09-17
+    Author: Richard Clark - http://richclarkdesign.com 
+    Twitter: @rich_clark
+    */
+
+    html, body { margin:0; height: 100%;}
+
+    html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section, summary,
+    time, mark, audio, video {
+        margin:0;
+        padding:0;
+        border:0;
+        outline:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+    }
+
+    body {
+        line-height:1;
+    }
+
+    article,aside,details,figcaption,figure,
+    footer,header,hgroup,menu,nav,section { 
+        display:block;
+    }
+
+    nav ul {
+        list-style:none;
+    }
+
+    blockquote, q {
+        quotes:none;
+    }
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content:'';
+        content:none;
+    }
+
+    a {
+        margin:0;
+        padding:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+    }
+
+    /* change colours to suit your needs */
+    ins {
+        background-color:#ff9;
+        color:#000;
+        text-decoration:none;
+    }
+
+    /* change colours to suit your needs */
+    mark {
+        background-color:#ff9;
+        color:#000; 
+        font-style:italic;
+        font-weight:bold;
+    }
+
+    del {
+        text-decoration: line-through;
+    }
+
+    abbr[title], dfn[title] {
+        border-bottom:1px dotted;
+        cursor:help;
+    }
+
+    table {
+        border-collapse:collapse;
+        border-spacing:0;
+    }
+
+    /* change border colour to suit your needs */
+    hr {
+        display:block;
+        height:1px;
+        border:0;   
+        border-top:1px solid #cccccc;
+        margin:1em 0;
+        padding:0;
+    }
+
+    input, select {
+        vertical-align:middle;
+    }
+
+
+
+    /********************* 
+        Variaveis 
+    *********************/
+    /*Backgrounds e Colors*/
+    @bg: #333;
+    @color: #FFF;
+    @black: #000;
+    @bgShots: #f4f4f4;
+    @cinzaEscuro: #4a4a4a; 
+
+    /*numbers*/
+    @n-20: 20px;
+
+    /*Font-Size*/
+    @s-10: 10px;
+    @s-15: 15px;
+    @s-16: 16px;
+    /*Padding*/
+    @pd-20: 20px;
+    /*Box*/
+    @widget-w: 100%;
+    @widget-h: 100%;
+
+    /* Mixins */
+
+    .border-radius (@radius: 5px) {
+        -webkit-border-radius: @radius;
+        -moz-border-radius:    @radius;
+        border-radius:         @radius;
+
+        -moz-background-clip:    padding;
+        -webkit-background-clip: padding-box;
+        background-clip:         padding-box;
+    }
+
+    .box-shadow (@string: 0 0 5px #444) {
+        -moz-box-shadow: @string;
+        -webkit-box-shadow: @string;
+        box-shadow: @string;
+    }
+
+    .clear {clear: both;}
+
+    /********************* 
+        Widget 
+    *********************/
+    #widget {
+        font-family: 'Roboto', sans-serif;
+        height: @widget-h;
+        width: @widget-w;
+        font-weight: 300;
+
+        .content-shots {
+            background-color: @bgShots;
+            padding: 10% 0;
+
+            .list-shots {
+                list-style: none;
+                display: block;
+                margin: 0 auto;
+                float: none;
+
+                .shots {
+                    float: left;
+                    padding: 20px;
+                    background-color: #E2E2E2;
+                    .border-radius; 
+                    margin: 0 1% 1% 0;
+
+                    a {
+                        display: inline-block;
+                        height: 100%;
+                        width: 100%;
+                        position: relative;
+
+                        &:hover > .dri-user-description {
+                            display: block;
+                        }
+
+                        img {
+                            width: 100%;
+                        }
+
+                        .dri-user-description {
+                            display: none;
+                            color: @color;
+                            position: absolute;
+                            bottom: 0;
+                            padding: 10px;
+                            background-color: @black; 
+
+                            .title {
+                                float: left;
+                                max-width: 90px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            .likes {
+                                float: right;                            
+                                background-image: url('https://dribbble.com//assets/icon-views-sm-048dbe8eb92c4224c53863f958acf7e3.png');
+                                margin-left: 0;
+                                border-left: none;
+                                padding: 0 0 0 18px;
+                                background-repeat: no-repeat;
+                                background-position: 0 2px;
+                            }
+
+                        }
+                    }
+                    
+
+                    .content-user {
+                        display: none;
+                        background-color: @color;
+                        padding: 10px;
+                        min-height: 300px;
+
+                        .user-profile {
+                            .border-radius(100%); 
+                            width: 50%;
+                            border: 2px solid #ccc;
+                            margin: 0 auto;
+                            display: block;
+                        }
+
+                        .user {
+                            float: left;
+                            margin: 6%;
+                        }
+
+                        .bio {
+                            clear: both;
+                            margin-top: 10px;
+                            word-wrap: break-word;
+                            word-break: break-all;
+                            display: inline-block;
+                            color: @cinzaEscuro;
+
+                            a {
+                                color: @black;
+                                text-decoration: none;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }                        
+                        }
+
+                        .bt-more {
+                            padding: 15px 0;
+                            display: block;
+                            height: auto;
+                            color: #333;
+                            text-decoration: none;
+                            background-color: #ccc;
+                            text-align: center;
+                            .border-radius; 
+                            position: absolute;
+                            bottom: 10px;
+                            width: 85%;
+
+                            &:hover {
+                                background-color: #333;
+                                color: #ccc;
+                            }
+                        }
+
+                    }
+
+                    .content-user.show {
+                        display: inline-block;
+                        position: relative;
+                    }
+
+                    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+                        
+                        .dri-user-description {
+                            width: 98%;
+                            font-size: 3em;
+
+                            .title {
+                                max-width: 700px !important;
+                            }
+
+                            .likes {                     
+                                background-image: none !important;
+                                &:before {
+                                    content: 'likes:';
+                                    padding-right: 20px;
+                                }
+                            }
+                        }
+
+                        .content-user {
+                            min-height: 1150px;
+
+                            .bio {
+                                font-size: 3em;
+                            }
+
+                            .user {
+                                float: none;
+                                font-size: 3em;
+                                text-align: center;
+                            }
+
+                            .bt-more {
+                                width: 98%;
+                                font-size: 3em;                            
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #widget header {
+        position: fixed;
+        width: @widget-w;
+        background: @bg; color: @color; font-size: @s-15;
+        text-transform: uppercase; padding:@pd-20;
+        z-index: 1;    
+
+        .dribbble-header {        
+            float: left;
+            margin-right: 10px;
+            margin: 0 1% 0 0;        
+
+            .logo {
+                width: 50px;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        .title-header {
+            float: left;
+            font-size: 0.750em;
+            margin-top: 0.30%;
+        }
+        
+
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            .dribbble-header {
+                text-align: center;
+                padding: 60px;
+
+                .logo {
+                    width: auto;
+                    height: 90px;                
+                }
+            }
+
+            .title-header {
+                display: none;
+            }
+        }
+
+    }
+
+    #widget footer {
+        border-top: 1px solid #e5e5e5;
+        background: @color; color: @color; font-size: @s-15;
+        text-transform: uppercase; padding:@pd-20;
+        position: fixed;
+        width: @widget-w;
+        bottom: 0;
+        z-index: 1;
+
+        .content-footer {
+            text-align: center;
+            margin: 0 auto;
+            width: 90%;
+            display: inline-block;
+
+            .dribbble-footer {
+                display: inline-block;
+                margin-right: 10px;
+
+                .dribble-footer {
+                    width: 50px;
+                }
+
+            }
+
+            .copyright {
+                display: inline-block;
+                color: @black;
+            }
+        }
+    }
+
+
+    /* Modal */
+    #widget .modal-container {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            -webkit-overflow-scrolling: touch;
+            display: none;
+            z-index: 2;
+
+        .modal-users {
+            vertical-align: baseline;
+            position: fixed;
+            top: 13%;
+            left: 5%;
+            width: 90%;
+            height: 520px;
+            background: @black;
+            z-index: 10;
+            .box-shadow;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+
+            .modal-image {
+                width: 60%;
+                float: left;
+                background-size: cover;
+                background-position-x: 50%;
+            }
+
+            .modal-info {
+                width: 35%;
+                float: left;
+                background-color: #FCFCFC;
+                padding: 21px 28px;
+                border-left: 1px solid #000;   
+                
+                .content-info {
+                    overflow: auto;
+                    height: 90%;
+                    
+                    .bt-close {
+                        float: right;
+                        display: inline-block;
+                        width: auto;
+                        text-decoration: none;
+                        font-size: 1em;
+                        font-weight: bold;
+                        font-family: arial;
+                        color: @cinzaEscuro;
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                    }
+
+                    .user-profile {
+                        width: 40%;
+                        float: left;
+                        .border-radius(100%);
+                    }
+
+                    .bio {
+                        margin-top: 20px;
+                    }
+
+                    .user {
+                        font-size: 2em;
+                        margin: 0.5em;
+                        float: left;
+                        word-wrap: break-word;
+                        width: 50%;
+                    }    
+
+                    a {
+                        color: @black;
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        .overlay {
+            min-height: 520px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #232323;
+            z-index: 2;
+            opacity: 0.8;
+        }
+
+    }
+    #widget .modal-container.show {
+        display: block;
+    }
+
+
+
+
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        #widget .content-shots {
+            background-color: @bgShots;
+            padding: 28% 0;
+        }
+
+        #widget .modal-container {            
+                padding: 50px 20px; 
+                height: 100%;                        
+                height: -webkit-calc(100% - 100px);  
+                height: -moz-calc(100% - 100px);     
+                height: calc(100% - 100px);
+                overflow: inherit;
+                position: inherit;
+                top: inherit;
+                left: inherit;
+
+
+            .modal-users {
+                top: 0;
+                left: 0;
+                width: 100%;
+                overflow: inherit;
+                height: auto !important;
+
+                .modal-image {
+                    height: 770px !important;                    
+                    display: inline-block;
+                    box-sizing: content-box;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                }
+
+                .modal-info {
+                    height: 1060px !important;
+                    float: none;
+                    width: 100%;
+                    display: inline-block;
+                    
+                    .content-info {
+                        overflow: scroll;
+                        height: 90%;
+                        width: 96%;
+                        position: relative;
+                        
+                        .bt-close {
+                            color: @cinzaEscuro;
+                            float: right;
+                            width: auto;
+                            text-decoration: none;
+                            font-size: 4em;
+                            font-weight: bold;
+                            font-family: arial;
+                            position: absolute;
+                            right: 2%;
+                            top: 2%;
+                        }
+
+                        .user-profile {
+                            width: 30%;
+                            float: left;
+                            .border-radius(100%);
+                        }
+
+                        .bio {
+                            margin-top: 20px;
+                            font-size: 3em;
+                            overflow: inherit;
+                            height: auto;
+                        }
+
+                        .user {
+                            font-size: 6em;
+                        } 
+
+                        p {
+                            font-size: 3em;
+                        }
+
+                        a {
+                            color: @black;
+                            text-decoration: none;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+            .overlay {
+                display: none;
+            }
+
+        }
+    }
